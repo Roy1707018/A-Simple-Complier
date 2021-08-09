@@ -1,0 +1,1826 @@
+Terminals unused in grammar
+
+   LEFTTHIRD
+   RIGHTTHIRD
+   DECREASE
+   WHILE
+   CHAR
+
+
+Grammar
+
+    0 $accept: program $end
+
+    1 program: PUJA body
+
+    2 body: LEFTBRACE statements RIGHTBRACE
+
+    3 statements: /* empty */
+    4           | statements declaration
+    5           | statements printf
+    6           | statements expressions
+    7           | statements ifeitherlast
+    8           | statements switchcase
+    9           | statements loop
+   10           | statements sorting
+
+   11 ifeitherlast: IF numberr LEFTBRACE if_statement RIGHTBRACE
+
+   12 $@1: /* empty */
+
+   13 ifeitherlast: IF numberr LEFTBRACE if_statement RIGHTBRACE $@1 LAST LEFTBRACE if_statement RIGHTBRACE
+
+   14 $@2: /* empty */
+
+   15 $@3: /* empty */
+
+   16 $@4: /* empty */
+
+   17 ifeitherlast: IF numberr LEFTBRACE if_statement RIGHTBRACE $@2 EITHER numberr $@3 LEFTBRACE if_statement RIGHTBRACE $@4 LAST LEFTBRACE if_statement RIGHTBRACE
+
+   18 $@5: /* empty */
+
+   19 $@6: /* empty */
+
+   20 ifeitherlast: IF numberr LEFTBRACE if_statement IF numberr $@5 LEFTBRACE if_statement RIGHTBRACE $@6 LAST LEFTBRACE if_statement RIGHTBRACE RIGHTBRACE
+
+   21 $@7: /* empty */
+
+   22 switchcase: SWITCH VARIABLE $@7 LEFT casing RIGHT
+
+   23 casing: /* empty */
+
+   24 $@8: /* empty */
+
+   25 casing: casing CASE INT $@8 LEFTBRACE if_statement RIGHTBRACE
+
+   26 $@9: /* empty */
+
+   27 casing: casing CASE FLOAT LEFTBRACE $@9 if_statement RIGHTBRACE
+
+   28 if_statement: /* empty */
+   29             | if_statement printf
+
+   30 loop: FOR VARIABLE EQUAL INT COMMA VARIABLE LESSTHAN INT COMMA VARIABLE INCREASE LEFT PRINT LEFT VARIABLE LEFT VARIABLE RIGHT RIGHT SEMICOLON RIGHT
+
+   31 sorting: SORTT VARIABLE SEMICOLON
+   32        | DESSORTT VARIABLE SEMICOLON
+
+   33 declaration: VARIABLE EQUAL INT SEMICOLON
+   34            | VARIABLE EQUAL FLOAT SEMICOLON
+   35            | VARIABLE EQUAL STRING SEMICOLON
+   36            | ARRAY TYPE_INT VARIABLE LEFT INT RIGHT SEMICOLON
+   37            | ARRAY TYPE_FLOAT VARIABLE LEFT INT RIGHT SEMICOLON
+   38            | VARIABLE LEFT INT RIGHT EQUAL INT SEMICOLON
+   39            | VARIABLE LEFT INT RIGHT EQUAL FLOAT SEMICOLON
+
+   40 printf: PRINT LEFT STRING RIGHT SEMICOLON
+   41       | PRINT LEFT variable_name RIGHT SEMICOLON
+
+   42 variable_name: /* empty */
+   43              | variable_name VARIABLE
+
+   44 expressions: TYPE_INT VARIABLE EQUAL number SEMICOLON
+   45            | TYPE_FLOAT VARIABLE EQUAL fnumber SEMICOLON
+
+   46 number: INT
+   47       | VARIABLE
+   48       | number PLUS number
+   49       | number MINUS number
+   50       | number MUL number
+   51       | number DIV number
+   52       | number MOD number
+
+   53 numberr: INT
+   54        | VARIABLE
+   55        | numberr GREATERTHAN numberr
+   56        | numberr LESSTHAN numberr
+   57        | numberr EQUALEQUAL numberr
+   58        | numberr NOTEQUAL numberr
+   59        | numberr OR numberr
+   60        | numberr AND numberr
+
+   61 fnumber: FLOAT
+   62        | VARIABLE
+   63        | fnumber PLUS fnumber
+   64        | fnumber MINUS fnumber
+   65        | fnumber MUL fnumber
+   66        | fnumber DIV fnumber
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+PUJA (258) 1
+LEFT (259) 22 30 36 37 38 39 40 41
+RIGHT (260) 22 30 36 37 38 39 40 41
+LEFTBRACE (261) 2 11 13 17 20 25 27
+RIGHTBRACE (262) 2 11 13 17 20 25 27
+LEFTTHIRD (263)
+RIGHTTHIRD (264)
+COMMA (265) 30
+SEMICOLON (266) 30 31 32 33 34 35 36 37 38 39 40 41 44 45
+PLUS (267) 48 63
+MINUS (268) 49 64
+MUL (269) 50 65
+DIV (270) 51 66
+TYPE_FLOAT (271) 37 45
+TYPE_INT (272) 36 44
+ARRAY (273) 36 37
+DESSORTT (274) 32
+EQUAL (275) 30 33 34 35 38 39 44 45
+EQUALEQUAL (276) 57
+LESSTHAN (277) 30 56
+GREATERTHAN (278) 55
+PRINT (279) 30 40 41
+MOD (280) 52
+SORTT (281) 31
+IF (282) 11 13 17 20
+LAST (283) 13 17 20
+EITHER (284) 17
+NOTEQUAL (285) 58
+AND (286) 60
+OR (287) 59
+INCREASE (288) 30
+DECREASE (289)
+FOR (290) 30
+WHILE (291)
+CASE (292) 25 27
+SWITCH (293) 22
+INT (294) 25 30 33 36 37 38 39 46 53
+FLOAT (295) 27 34 39 61
+CHAR (296)
+VARIABLE (297) 22 30 31 32 33 34 35 36 37 38 39 43 44 45 47 54 62
+STRING (298) 35 40
+
+
+Nonterminals, with rules where they appear
+
+$accept (44)
+    on left: 0
+program (45)
+    on left: 1, on right: 0
+body (46)
+    on left: 2, on right: 1
+statements (47)
+    on left: 3 4 5 6 7 8 9 10, on right: 2 4 5 6 7 8 9 10
+ifeitherlast (48)
+    on left: 11 13 17 20, on right: 7
+$@1 (49)
+    on left: 12, on right: 13
+$@2 (50)
+    on left: 14, on right: 17
+$@3 (51)
+    on left: 15, on right: 17
+$@4 (52)
+    on left: 16, on right: 17
+$@5 (53)
+    on left: 18, on right: 20
+$@6 (54)
+    on left: 19, on right: 20
+switchcase (55)
+    on left: 22, on right: 8
+$@7 (56)
+    on left: 21, on right: 22
+casing (57)
+    on left: 23 25 27, on right: 22 25 27
+$@8 (58)
+    on left: 24, on right: 25
+$@9 (59)
+    on left: 26, on right: 27
+if_statement (60)
+    on left: 28 29, on right: 11 13 17 20 25 27 29
+loop (61)
+    on left: 30, on right: 9
+sorting (62)
+    on left: 31 32, on right: 10
+declaration (63)
+    on left: 33 34 35 36 37 38 39, on right: 4
+printf (64)
+    on left: 40 41, on right: 5 29
+variable_name (65)
+    on left: 42 43, on right: 41 43
+expressions (66)
+    on left: 44 45, on right: 6
+number (67)
+    on left: 46 47 48 49 50 51 52, on right: 44 48 49 50 51 52
+numberr (68)
+    on left: 53 54 55 56 57 58 59 60, on right: 11 13 17 20 55 56 57
+    58 59 60
+fnumber (69)
+    on left: 61 62 63 64 65 66, on right: 45 63 64 65 66
+
+
+state 0
+
+    0 $accept: . program $end
+
+    PUJA  shift, and go to state 1
+
+    program  go to state 2
+
+
+state 1
+
+    1 program: PUJA . body
+
+    LEFTBRACE  shift, and go to state 3
+
+    body  go to state 4
+
+
+state 2
+
+    0 $accept: program . $end
+
+    $end  shift, and go to state 5
+
+
+state 3
+
+    2 body: LEFTBRACE . statements RIGHTBRACE
+
+    $default  reduce using rule 3 (statements)
+
+    statements  go to state 6
+
+
+state 4
+
+    1 program: PUJA body .
+
+    $default  reduce using rule 1 (program)
+
+
+state 5
+
+    0 $accept: program $end .
+
+    $default  accept
+
+
+state 6
+
+    2 body: LEFTBRACE statements . RIGHTBRACE
+    4 statements: statements . declaration
+    5           | statements . printf
+    6           | statements . expressions
+    7           | statements . ifeitherlast
+    8           | statements . switchcase
+    9           | statements . loop
+   10           | statements . sorting
+
+    RIGHTBRACE  shift, and go to state 7
+    TYPE_FLOAT  shift, and go to state 8
+    TYPE_INT    shift, and go to state 9
+    ARRAY       shift, and go to state 10
+    DESSORTT    shift, and go to state 11
+    PRINT       shift, and go to state 12
+    SORTT       shift, and go to state 13
+    IF          shift, and go to state 14
+    FOR         shift, and go to state 15
+    SWITCH      shift, and go to state 16
+    VARIABLE    shift, and go to state 17
+
+    ifeitherlast  go to state 18
+    switchcase    go to state 19
+    loop          go to state 20
+    sorting       go to state 21
+    declaration   go to state 22
+    printf        go to state 23
+    expressions   go to state 24
+
+
+state 7
+
+    2 body: LEFTBRACE statements RIGHTBRACE .
+
+    $default  reduce using rule 2 (body)
+
+
+state 8
+
+   45 expressions: TYPE_FLOAT . VARIABLE EQUAL fnumber SEMICOLON
+
+    VARIABLE  shift, and go to state 25
+
+
+state 9
+
+   44 expressions: TYPE_INT . VARIABLE EQUAL number SEMICOLON
+
+    VARIABLE  shift, and go to state 26
+
+
+state 10
+
+   36 declaration: ARRAY . TYPE_INT VARIABLE LEFT INT RIGHT SEMICOLON
+   37            | ARRAY . TYPE_FLOAT VARIABLE LEFT INT RIGHT SEMICOLON
+
+    TYPE_FLOAT  shift, and go to state 27
+    TYPE_INT    shift, and go to state 28
+
+
+state 11
+
+   32 sorting: DESSORTT . VARIABLE SEMICOLON
+
+    VARIABLE  shift, and go to state 29
+
+
+state 12
+
+   40 printf: PRINT . LEFT STRING RIGHT SEMICOLON
+   41       | PRINT . LEFT variable_name RIGHT SEMICOLON
+
+    LEFT  shift, and go to state 30
+
+
+state 13
+
+   31 sorting: SORTT . VARIABLE SEMICOLON
+
+    VARIABLE  shift, and go to state 31
+
+
+state 14
+
+   11 ifeitherlast: IF . numberr LEFTBRACE if_statement RIGHTBRACE
+   13             | IF . numberr LEFTBRACE if_statement RIGHTBRACE $@1 LAST LEFTBRACE if_statement RIGHTBRACE
+   17             | IF . numberr LEFTBRACE if_statement RIGHTBRACE $@2 EITHER numberr $@3 LEFTBRACE if_statement RIGHTBRACE $@4 LAST LEFTBRACE if_statement RIGHTBRACE
+   20             | IF . numberr LEFTBRACE if_statement IF numberr $@5 LEFTBRACE if_statement RIGHTBRACE $@6 LAST LEFTBRACE if_statement RIGHTBRACE RIGHTBRACE
+
+    INT       shift, and go to state 32
+    VARIABLE  shift, and go to state 33
+
+    numberr  go to state 34
+
+
+state 15
+
+   30 loop: FOR . VARIABLE EQUAL INT COMMA VARIABLE LESSTHAN INT COMMA VARIABLE INCREASE LEFT PRINT LEFT VARIABLE LEFT VARIABLE RIGHT RIGHT SEMICOLON RIGHT
+
+    VARIABLE  shift, and go to state 35
+
+
+state 16
+
+   22 switchcase: SWITCH . VARIABLE $@7 LEFT casing RIGHT
+
+    VARIABLE  shift, and go to state 36
+
+
+state 17
+
+   33 declaration: VARIABLE . EQUAL INT SEMICOLON
+   34            | VARIABLE . EQUAL FLOAT SEMICOLON
+   35            | VARIABLE . EQUAL STRING SEMICOLON
+   38            | VARIABLE . LEFT INT RIGHT EQUAL INT SEMICOLON
+   39            | VARIABLE . LEFT INT RIGHT EQUAL FLOAT SEMICOLON
+
+    LEFT   shift, and go to state 37
+    EQUAL  shift, and go to state 38
+
+
+state 18
+
+    7 statements: statements ifeitherlast .
+
+    $default  reduce using rule 7 (statements)
+
+
+state 19
+
+    8 statements: statements switchcase .
+
+    $default  reduce using rule 8 (statements)
+
+
+state 20
+
+    9 statements: statements loop .
+
+    $default  reduce using rule 9 (statements)
+
+
+state 21
+
+   10 statements: statements sorting .
+
+    $default  reduce using rule 10 (statements)
+
+
+state 22
+
+    4 statements: statements declaration .
+
+    $default  reduce using rule 4 (statements)
+
+
+state 23
+
+    5 statements: statements printf .
+
+    $default  reduce using rule 5 (statements)
+
+
+state 24
+
+    6 statements: statements expressions .
+
+    $default  reduce using rule 6 (statements)
+
+
+state 25
+
+   45 expressions: TYPE_FLOAT VARIABLE . EQUAL fnumber SEMICOLON
+
+    EQUAL  shift, and go to state 39
+
+
+state 26
+
+   44 expressions: TYPE_INT VARIABLE . EQUAL number SEMICOLON
+
+    EQUAL  shift, and go to state 40
+
+
+state 27
+
+   37 declaration: ARRAY TYPE_FLOAT . VARIABLE LEFT INT RIGHT SEMICOLON
+
+    VARIABLE  shift, and go to state 41
+
+
+state 28
+
+   36 declaration: ARRAY TYPE_INT . VARIABLE LEFT INT RIGHT SEMICOLON
+
+    VARIABLE  shift, and go to state 42
+
+
+state 29
+
+   32 sorting: DESSORTT VARIABLE . SEMICOLON
+
+    SEMICOLON  shift, and go to state 43
+
+
+state 30
+
+   40 printf: PRINT LEFT . STRING RIGHT SEMICOLON
+   41       | PRINT LEFT . variable_name RIGHT SEMICOLON
+
+    STRING  shift, and go to state 44
+
+    $default  reduce using rule 42 (variable_name)
+
+    variable_name  go to state 45
+
+
+state 31
+
+   31 sorting: SORTT VARIABLE . SEMICOLON
+
+    SEMICOLON  shift, and go to state 46
+
+
+state 32
+
+   53 numberr: INT .
+
+    $default  reduce using rule 53 (numberr)
+
+
+state 33
+
+   54 numberr: VARIABLE .
+
+    $default  reduce using rule 54 (numberr)
+
+
+state 34
+
+   11 ifeitherlast: IF numberr . LEFTBRACE if_statement RIGHTBRACE
+   13             | IF numberr . LEFTBRACE if_statement RIGHTBRACE $@1 LAST LEFTBRACE if_statement RIGHTBRACE
+   17             | IF numberr . LEFTBRACE if_statement RIGHTBRACE $@2 EITHER numberr $@3 LEFTBRACE if_statement RIGHTBRACE $@4 LAST LEFTBRACE if_statement RIGHTBRACE
+   20             | IF numberr . LEFTBRACE if_statement IF numberr $@5 LEFTBRACE if_statement RIGHTBRACE $@6 LAST LEFTBRACE if_statement RIGHTBRACE RIGHTBRACE
+   55 numberr: numberr . GREATERTHAN numberr
+   56        | numberr . LESSTHAN numberr
+   57        | numberr . EQUALEQUAL numberr
+   58        | numberr . NOTEQUAL numberr
+   59        | numberr . OR numberr
+   60        | numberr . AND numberr
+
+    LEFTBRACE    shift, and go to state 47
+    EQUALEQUAL   shift, and go to state 48
+    LESSTHAN     shift, and go to state 49
+    GREATERTHAN  shift, and go to state 50
+    NOTEQUAL     shift, and go to state 51
+    AND          shift, and go to state 52
+    OR           shift, and go to state 53
+
+
+state 35
+
+   30 loop: FOR VARIABLE . EQUAL INT COMMA VARIABLE LESSTHAN INT COMMA VARIABLE INCREASE LEFT PRINT LEFT VARIABLE LEFT VARIABLE RIGHT RIGHT SEMICOLON RIGHT
+
+    EQUAL  shift, and go to state 54
+
+
+state 36
+
+   22 switchcase: SWITCH VARIABLE . $@7 LEFT casing RIGHT
+
+    $default  reduce using rule 21 ($@7)
+
+    $@7  go to state 55
+
+
+state 37
+
+   38 declaration: VARIABLE LEFT . INT RIGHT EQUAL INT SEMICOLON
+   39            | VARIABLE LEFT . INT RIGHT EQUAL FLOAT SEMICOLON
+
+    INT  shift, and go to state 56
+
+
+state 38
+
+   33 declaration: VARIABLE EQUAL . INT SEMICOLON
+   34            | VARIABLE EQUAL . FLOAT SEMICOLON
+   35            | VARIABLE EQUAL . STRING SEMICOLON
+
+    INT     shift, and go to state 57
+    FLOAT   shift, and go to state 58
+    STRING  shift, and go to state 59
+
+
+state 39
+
+   45 expressions: TYPE_FLOAT VARIABLE EQUAL . fnumber SEMICOLON
+
+    FLOAT     shift, and go to state 60
+    VARIABLE  shift, and go to state 61
+
+    fnumber  go to state 62
+
+
+state 40
+
+   44 expressions: TYPE_INT VARIABLE EQUAL . number SEMICOLON
+
+    INT       shift, and go to state 63
+    VARIABLE  shift, and go to state 64
+
+    number  go to state 65
+
+
+state 41
+
+   37 declaration: ARRAY TYPE_FLOAT VARIABLE . LEFT INT RIGHT SEMICOLON
+
+    LEFT  shift, and go to state 66
+
+
+state 42
+
+   36 declaration: ARRAY TYPE_INT VARIABLE . LEFT INT RIGHT SEMICOLON
+
+    LEFT  shift, and go to state 67
+
+
+state 43
+
+   32 sorting: DESSORTT VARIABLE SEMICOLON .
+
+    $default  reduce using rule 32 (sorting)
+
+
+state 44
+
+   40 printf: PRINT LEFT STRING . RIGHT SEMICOLON
+
+    RIGHT  shift, and go to state 68
+
+
+state 45
+
+   41 printf: PRINT LEFT variable_name . RIGHT SEMICOLON
+   43 variable_name: variable_name . VARIABLE
+
+    RIGHT     shift, and go to state 69
+    VARIABLE  shift, and go to state 70
+
+
+state 46
+
+   31 sorting: SORTT VARIABLE SEMICOLON .
+
+    $default  reduce using rule 31 (sorting)
+
+
+state 47
+
+   11 ifeitherlast: IF numberr LEFTBRACE . if_statement RIGHTBRACE
+   13             | IF numberr LEFTBRACE . if_statement RIGHTBRACE $@1 LAST LEFTBRACE if_statement RIGHTBRACE
+   17             | IF numberr LEFTBRACE . if_statement RIGHTBRACE $@2 EITHER numberr $@3 LEFTBRACE if_statement RIGHTBRACE $@4 LAST LEFTBRACE if_statement RIGHTBRACE
+   20             | IF numberr LEFTBRACE . if_statement IF numberr $@5 LEFTBRACE if_statement RIGHTBRACE $@6 LAST LEFTBRACE if_statement RIGHTBRACE RIGHTBRACE
+
+    $default  reduce using rule 28 (if_statement)
+
+    if_statement  go to state 71
+
+
+state 48
+
+   57 numberr: numberr EQUALEQUAL . numberr
+
+    INT       shift, and go to state 32
+    VARIABLE  shift, and go to state 33
+
+    numberr  go to state 72
+
+
+state 49
+
+   56 numberr: numberr LESSTHAN . numberr
+
+    INT       shift, and go to state 32
+    VARIABLE  shift, and go to state 33
+
+    numberr  go to state 73
+
+
+state 50
+
+   55 numberr: numberr GREATERTHAN . numberr
+
+    INT       shift, and go to state 32
+    VARIABLE  shift, and go to state 33
+
+    numberr  go to state 74
+
+
+state 51
+
+   58 numberr: numberr NOTEQUAL . numberr
+
+    INT       shift, and go to state 32
+    VARIABLE  shift, and go to state 33
+
+    numberr  go to state 75
+
+
+state 52
+
+   60 numberr: numberr AND . numberr
+
+    INT       shift, and go to state 32
+    VARIABLE  shift, and go to state 33
+
+    numberr  go to state 76
+
+
+state 53
+
+   59 numberr: numberr OR . numberr
+
+    INT       shift, and go to state 32
+    VARIABLE  shift, and go to state 33
+
+    numberr  go to state 77
+
+
+state 54
+
+   30 loop: FOR VARIABLE EQUAL . INT COMMA VARIABLE LESSTHAN INT COMMA VARIABLE INCREASE LEFT PRINT LEFT VARIABLE LEFT VARIABLE RIGHT RIGHT SEMICOLON RIGHT
+
+    INT  shift, and go to state 78
+
+
+state 55
+
+   22 switchcase: SWITCH VARIABLE $@7 . LEFT casing RIGHT
+
+    LEFT  shift, and go to state 79
+
+
+state 56
+
+   38 declaration: VARIABLE LEFT INT . RIGHT EQUAL INT SEMICOLON
+   39            | VARIABLE LEFT INT . RIGHT EQUAL FLOAT SEMICOLON
+
+    RIGHT  shift, and go to state 80
+
+
+state 57
+
+   33 declaration: VARIABLE EQUAL INT . SEMICOLON
+
+    SEMICOLON  shift, and go to state 81
+
+
+state 58
+
+   34 declaration: VARIABLE EQUAL FLOAT . SEMICOLON
+
+    SEMICOLON  shift, and go to state 82
+
+
+state 59
+
+   35 declaration: VARIABLE EQUAL STRING . SEMICOLON
+
+    SEMICOLON  shift, and go to state 83
+
+
+state 60
+
+   61 fnumber: FLOAT .
+
+    $default  reduce using rule 61 (fnumber)
+
+
+state 61
+
+   62 fnumber: VARIABLE .
+
+    $default  reduce using rule 62 (fnumber)
+
+
+state 62
+
+   45 expressions: TYPE_FLOAT VARIABLE EQUAL fnumber . SEMICOLON
+   63 fnumber: fnumber . PLUS fnumber
+   64        | fnumber . MINUS fnumber
+   65        | fnumber . MUL fnumber
+   66        | fnumber . DIV fnumber
+
+    SEMICOLON  shift, and go to state 84
+    PLUS       shift, and go to state 85
+    MINUS      shift, and go to state 86
+    MUL        shift, and go to state 87
+    DIV        shift, and go to state 88
+
+
+state 63
+
+   46 number: INT .
+
+    $default  reduce using rule 46 (number)
+
+
+state 64
+
+   47 number: VARIABLE .
+
+    $default  reduce using rule 47 (number)
+
+
+state 65
+
+   44 expressions: TYPE_INT VARIABLE EQUAL number . SEMICOLON
+   48 number: number . PLUS number
+   49       | number . MINUS number
+   50       | number . MUL number
+   51       | number . DIV number
+   52       | number . MOD number
+
+    SEMICOLON  shift, and go to state 89
+    PLUS       shift, and go to state 90
+    MINUS      shift, and go to state 91
+    MUL        shift, and go to state 92
+    DIV        shift, and go to state 93
+    MOD        shift, and go to state 94
+
+
+state 66
+
+   37 declaration: ARRAY TYPE_FLOAT VARIABLE LEFT . INT RIGHT SEMICOLON
+
+    INT  shift, and go to state 95
+
+
+state 67
+
+   36 declaration: ARRAY TYPE_INT VARIABLE LEFT . INT RIGHT SEMICOLON
+
+    INT  shift, and go to state 96
+
+
+state 68
+
+   40 printf: PRINT LEFT STRING RIGHT . SEMICOLON
+
+    SEMICOLON  shift, and go to state 97
+
+
+state 69
+
+   41 printf: PRINT LEFT variable_name RIGHT . SEMICOLON
+
+    SEMICOLON  shift, and go to state 98
+
+
+state 70
+
+   43 variable_name: variable_name VARIABLE .
+
+    $default  reduce using rule 43 (variable_name)
+
+
+state 71
+
+   11 ifeitherlast: IF numberr LEFTBRACE if_statement . RIGHTBRACE
+   13             | IF numberr LEFTBRACE if_statement . RIGHTBRACE $@1 LAST LEFTBRACE if_statement RIGHTBRACE
+   17             | IF numberr LEFTBRACE if_statement . RIGHTBRACE $@2 EITHER numberr $@3 LEFTBRACE if_statement RIGHTBRACE $@4 LAST LEFTBRACE if_statement RIGHTBRACE
+   20             | IF numberr LEFTBRACE if_statement . IF numberr $@5 LEFTBRACE if_statement RIGHTBRACE $@6 LAST LEFTBRACE if_statement RIGHTBRACE RIGHTBRACE
+   29 if_statement: if_statement . printf
+
+    RIGHTBRACE  shift, and go to state 99
+    PRINT       shift, and go to state 12
+    IF          shift, and go to state 100
+
+    printf  go to state 101
+
+
+state 72
+
+   55 numberr: numberr . GREATERTHAN numberr
+   56        | numberr . LESSTHAN numberr
+   57        | numberr . EQUALEQUAL numberr
+   57        | numberr EQUALEQUAL numberr .
+   58        | numberr . NOTEQUAL numberr
+   59        | numberr . OR numberr
+   60        | numberr . AND numberr
+
+    LESSTHAN     shift, and go to state 49
+    GREATERTHAN  shift, and go to state 50
+
+    $default  reduce using rule 57 (numberr)
+
+
+state 73
+
+   55 numberr: numberr . GREATERTHAN numberr
+   56        | numberr . LESSTHAN numberr
+   56        | numberr LESSTHAN numberr .
+   57        | numberr . EQUALEQUAL numberr
+   58        | numberr . NOTEQUAL numberr
+   59        | numberr . OR numberr
+   60        | numberr . AND numberr
+
+    $default  reduce using rule 56 (numberr)
+
+
+state 74
+
+   55 numberr: numberr . GREATERTHAN numberr
+   55        | numberr GREATERTHAN numberr .
+   56        | numberr . LESSTHAN numberr
+   57        | numberr . EQUALEQUAL numberr
+   58        | numberr . NOTEQUAL numberr
+   59        | numberr . OR numberr
+   60        | numberr . AND numberr
+
+    $default  reduce using rule 55 (numberr)
+
+
+state 75
+
+   55 numberr: numberr . GREATERTHAN numberr
+   56        | numberr . LESSTHAN numberr
+   57        | numberr . EQUALEQUAL numberr
+   58        | numberr . NOTEQUAL numberr
+   58        | numberr NOTEQUAL numberr .
+   59        | numberr . OR numberr
+   60        | numberr . AND numberr
+
+    LESSTHAN     shift, and go to state 49
+    GREATERTHAN  shift, and go to state 50
+
+    $default  reduce using rule 58 (numberr)
+
+
+state 76
+
+   55 numberr: numberr . GREATERTHAN numberr
+   56        | numberr . LESSTHAN numberr
+   57        | numberr . EQUALEQUAL numberr
+   58        | numberr . NOTEQUAL numberr
+   59        | numberr . OR numberr
+   60        | numberr . AND numberr
+   60        | numberr AND numberr .
+
+    EQUALEQUAL   shift, and go to state 48
+    LESSTHAN     shift, and go to state 49
+    GREATERTHAN  shift, and go to state 50
+    NOTEQUAL     shift, and go to state 51
+
+    $default  reduce using rule 60 (numberr)
+
+
+state 77
+
+   55 numberr: numberr . GREATERTHAN numberr
+   56        | numberr . LESSTHAN numberr
+   57        | numberr . EQUALEQUAL numberr
+   58        | numberr . NOTEQUAL numberr
+   59        | numberr . OR numberr
+   59        | numberr OR numberr .
+   60        | numberr . AND numberr
+
+    EQUALEQUAL   shift, and go to state 48
+    LESSTHAN     shift, and go to state 49
+    GREATERTHAN  shift, and go to state 50
+    NOTEQUAL     shift, and go to state 51
+    AND          shift, and go to state 52
+
+    $default  reduce using rule 59 (numberr)
+
+
+state 78
+
+   30 loop: FOR VARIABLE EQUAL INT . COMMA VARIABLE LESSTHAN INT COMMA VARIABLE INCREASE LEFT PRINT LEFT VARIABLE LEFT VARIABLE RIGHT RIGHT SEMICOLON RIGHT
+
+    COMMA  shift, and go to state 102
+
+
+state 79
+
+   22 switchcase: SWITCH VARIABLE $@7 LEFT . casing RIGHT
+
+    $default  reduce using rule 23 (casing)
+
+    casing  go to state 103
+
+
+state 80
+
+   38 declaration: VARIABLE LEFT INT RIGHT . EQUAL INT SEMICOLON
+   39            | VARIABLE LEFT INT RIGHT . EQUAL FLOAT SEMICOLON
+
+    EQUAL  shift, and go to state 104
+
+
+state 81
+
+   33 declaration: VARIABLE EQUAL INT SEMICOLON .
+
+    $default  reduce using rule 33 (declaration)
+
+
+state 82
+
+   34 declaration: VARIABLE EQUAL FLOAT SEMICOLON .
+
+    $default  reduce using rule 34 (declaration)
+
+
+state 83
+
+   35 declaration: VARIABLE EQUAL STRING SEMICOLON .
+
+    $default  reduce using rule 35 (declaration)
+
+
+state 84
+
+   45 expressions: TYPE_FLOAT VARIABLE EQUAL fnumber SEMICOLON .
+
+    $default  reduce using rule 45 (expressions)
+
+
+state 85
+
+   63 fnumber: fnumber PLUS . fnumber
+
+    FLOAT     shift, and go to state 60
+    VARIABLE  shift, and go to state 61
+
+    fnumber  go to state 105
+
+
+state 86
+
+   64 fnumber: fnumber MINUS . fnumber
+
+    FLOAT     shift, and go to state 60
+    VARIABLE  shift, and go to state 61
+
+    fnumber  go to state 106
+
+
+state 87
+
+   65 fnumber: fnumber MUL . fnumber
+
+    FLOAT     shift, and go to state 60
+    VARIABLE  shift, and go to state 61
+
+    fnumber  go to state 107
+
+
+state 88
+
+   66 fnumber: fnumber DIV . fnumber
+
+    FLOAT     shift, and go to state 60
+    VARIABLE  shift, and go to state 61
+
+    fnumber  go to state 108
+
+
+state 89
+
+   44 expressions: TYPE_INT VARIABLE EQUAL number SEMICOLON .
+
+    $default  reduce using rule 44 (expressions)
+
+
+state 90
+
+   48 number: number PLUS . number
+
+    INT       shift, and go to state 63
+    VARIABLE  shift, and go to state 64
+
+    number  go to state 109
+
+
+state 91
+
+   49 number: number MINUS . number
+
+    INT       shift, and go to state 63
+    VARIABLE  shift, and go to state 64
+
+    number  go to state 110
+
+
+state 92
+
+   50 number: number MUL . number
+
+    INT       shift, and go to state 63
+    VARIABLE  shift, and go to state 64
+
+    number  go to state 111
+
+
+state 93
+
+   51 number: number DIV . number
+
+    INT       shift, and go to state 63
+    VARIABLE  shift, and go to state 64
+
+    number  go to state 112
+
+
+state 94
+
+   52 number: number MOD . number
+
+    INT       shift, and go to state 63
+    VARIABLE  shift, and go to state 64
+
+    number  go to state 113
+
+
+state 95
+
+   37 declaration: ARRAY TYPE_FLOAT VARIABLE LEFT INT . RIGHT SEMICOLON
+
+    RIGHT  shift, and go to state 114
+
+
+state 96
+
+   36 declaration: ARRAY TYPE_INT VARIABLE LEFT INT . RIGHT SEMICOLON
+
+    RIGHT  shift, and go to state 115
+
+
+state 97
+
+   40 printf: PRINT LEFT STRING RIGHT SEMICOLON .
+
+    $default  reduce using rule 40 (printf)
+
+
+state 98
+
+   41 printf: PRINT LEFT variable_name RIGHT SEMICOLON .
+
+    $default  reduce using rule 41 (printf)
+
+
+state 99
+
+   11 ifeitherlast: IF numberr LEFTBRACE if_statement RIGHTBRACE .
+   13             | IF numberr LEFTBRACE if_statement RIGHTBRACE . $@1 LAST LEFTBRACE if_statement RIGHTBRACE
+   17             | IF numberr LEFTBRACE if_statement RIGHTBRACE . $@2 EITHER numberr $@3 LEFTBRACE if_statement RIGHTBRACE $@4 LAST LEFTBRACE if_statement RIGHTBRACE
+
+    LAST      reduce using rule 12 ($@1)
+    EITHER    reduce using rule 14 ($@2)
+    $default  reduce using rule 11 (ifeitherlast)
+
+    $@1  go to state 116
+    $@2  go to state 117
+
+
+state 100
+
+   20 ifeitherlast: IF numberr LEFTBRACE if_statement IF . numberr $@5 LEFTBRACE if_statement RIGHTBRACE $@6 LAST LEFTBRACE if_statement RIGHTBRACE RIGHTBRACE
+
+    INT       shift, and go to state 32
+    VARIABLE  shift, and go to state 33
+
+    numberr  go to state 118
+
+
+state 101
+
+   29 if_statement: if_statement printf .
+
+    $default  reduce using rule 29 (if_statement)
+
+
+state 102
+
+   30 loop: FOR VARIABLE EQUAL INT COMMA . VARIABLE LESSTHAN INT COMMA VARIABLE INCREASE LEFT PRINT LEFT VARIABLE LEFT VARIABLE RIGHT RIGHT SEMICOLON RIGHT
+
+    VARIABLE  shift, and go to state 119
+
+
+state 103
+
+   22 switchcase: SWITCH VARIABLE $@7 LEFT casing . RIGHT
+   25 casing: casing . CASE INT $@8 LEFTBRACE if_statement RIGHTBRACE
+   27       | casing . CASE FLOAT LEFTBRACE $@9 if_statement RIGHTBRACE
+
+    RIGHT  shift, and go to state 120
+    CASE   shift, and go to state 121
+
+
+state 104
+
+   38 declaration: VARIABLE LEFT INT RIGHT EQUAL . INT SEMICOLON
+   39            | VARIABLE LEFT INT RIGHT EQUAL . FLOAT SEMICOLON
+
+    INT    shift, and go to state 122
+    FLOAT  shift, and go to state 123
+
+
+state 105
+
+   63 fnumber: fnumber . PLUS fnumber
+   63        | fnumber PLUS fnumber .
+   64        | fnumber . MINUS fnumber
+   65        | fnumber . MUL fnumber
+   66        | fnumber . DIV fnumber
+
+    MUL  shift, and go to state 87
+    DIV  shift, and go to state 88
+
+    $default  reduce using rule 63 (fnumber)
+
+
+state 106
+
+   63 fnumber: fnumber . PLUS fnumber
+   64        | fnumber . MINUS fnumber
+   64        | fnumber MINUS fnumber .
+   65        | fnumber . MUL fnumber
+   66        | fnumber . DIV fnumber
+
+    MUL  shift, and go to state 87
+    DIV  shift, and go to state 88
+
+    $default  reduce using rule 64 (fnumber)
+
+
+state 107
+
+   63 fnumber: fnumber . PLUS fnumber
+   64        | fnumber . MINUS fnumber
+   65        | fnumber . MUL fnumber
+   65        | fnumber MUL fnumber .
+   66        | fnumber . DIV fnumber
+
+    $default  reduce using rule 65 (fnumber)
+
+
+state 108
+
+   63 fnumber: fnumber . PLUS fnumber
+   64        | fnumber . MINUS fnumber
+   65        | fnumber . MUL fnumber
+   66        | fnumber . DIV fnumber
+   66        | fnumber DIV fnumber .
+
+    $default  reduce using rule 66 (fnumber)
+
+
+state 109
+
+   48 number: number . PLUS number
+   48       | number PLUS number .
+   49       | number . MINUS number
+   50       | number . MUL number
+   51       | number . DIV number
+   52       | number . MOD number
+
+    MUL  shift, and go to state 92
+    DIV  shift, and go to state 93
+    MOD  shift, and go to state 94
+
+    $default  reduce using rule 48 (number)
+
+
+state 110
+
+   48 number: number . PLUS number
+   49       | number . MINUS number
+   49       | number MINUS number .
+   50       | number . MUL number
+   51       | number . DIV number
+   52       | number . MOD number
+
+    MUL  shift, and go to state 92
+    DIV  shift, and go to state 93
+    MOD  shift, and go to state 94
+
+    $default  reduce using rule 49 (number)
+
+
+state 111
+
+   48 number: number . PLUS number
+   49       | number . MINUS number
+   50       | number . MUL number
+   50       | number MUL number .
+   51       | number . DIV number
+   52       | number . MOD number
+
+    $default  reduce using rule 50 (number)
+
+
+state 112
+
+   48 number: number . PLUS number
+   49       | number . MINUS number
+   50       | number . MUL number
+   51       | number . DIV number
+   51       | number DIV number .
+   52       | number . MOD number
+
+    $default  reduce using rule 51 (number)
+
+
+state 113
+
+   48 number: number . PLUS number
+   49       | number . MINUS number
+   50       | number . MUL number
+   51       | number . DIV number
+   52       | number . MOD number
+   52       | number MOD number .
+
+    $default  reduce using rule 52 (number)
+
+
+state 114
+
+   37 declaration: ARRAY TYPE_FLOAT VARIABLE LEFT INT RIGHT . SEMICOLON
+
+    SEMICOLON  shift, and go to state 124
+
+
+state 115
+
+   36 declaration: ARRAY TYPE_INT VARIABLE LEFT INT RIGHT . SEMICOLON
+
+    SEMICOLON  shift, and go to state 125
+
+
+state 116
+
+   13 ifeitherlast: IF numberr LEFTBRACE if_statement RIGHTBRACE $@1 . LAST LEFTBRACE if_statement RIGHTBRACE
+
+    LAST  shift, and go to state 126
+
+
+state 117
+
+   17 ifeitherlast: IF numberr LEFTBRACE if_statement RIGHTBRACE $@2 . EITHER numberr $@3 LEFTBRACE if_statement RIGHTBRACE $@4 LAST LEFTBRACE if_statement RIGHTBRACE
+
+    EITHER  shift, and go to state 127
+
+
+state 118
+
+   20 ifeitherlast: IF numberr LEFTBRACE if_statement IF numberr . $@5 LEFTBRACE if_statement RIGHTBRACE $@6 LAST LEFTBRACE if_statement RIGHTBRACE RIGHTBRACE
+   55 numberr: numberr . GREATERTHAN numberr
+   56        | numberr . LESSTHAN numberr
+   57        | numberr . EQUALEQUAL numberr
+   58        | numberr . NOTEQUAL numberr
+   59        | numberr . OR numberr
+   60        | numberr . AND numberr
+
+    EQUALEQUAL   shift, and go to state 48
+    LESSTHAN     shift, and go to state 49
+    GREATERTHAN  shift, and go to state 50
+    NOTEQUAL     shift, and go to state 51
+    AND          shift, and go to state 52
+    OR           shift, and go to state 53
+
+    $default  reduce using rule 18 ($@5)
+
+    $@5  go to state 128
+
+
+state 119
+
+   30 loop: FOR VARIABLE EQUAL INT COMMA VARIABLE . LESSTHAN INT COMMA VARIABLE INCREASE LEFT PRINT LEFT VARIABLE LEFT VARIABLE RIGHT RIGHT SEMICOLON RIGHT
+
+    LESSTHAN  shift, and go to state 129
+
+
+state 120
+
+   22 switchcase: SWITCH VARIABLE $@7 LEFT casing RIGHT .
+
+    $default  reduce using rule 22 (switchcase)
+
+
+state 121
+
+   25 casing: casing CASE . INT $@8 LEFTBRACE if_statement RIGHTBRACE
+   27       | casing CASE . FLOAT LEFTBRACE $@9 if_statement RIGHTBRACE
+
+    INT    shift, and go to state 130
+    FLOAT  shift, and go to state 131
+
+
+state 122
+
+   38 declaration: VARIABLE LEFT INT RIGHT EQUAL INT . SEMICOLON
+
+    SEMICOLON  shift, and go to state 132
+
+
+state 123
+
+   39 declaration: VARIABLE LEFT INT RIGHT EQUAL FLOAT . SEMICOLON
+
+    SEMICOLON  shift, and go to state 133
+
+
+state 124
+
+   37 declaration: ARRAY TYPE_FLOAT VARIABLE LEFT INT RIGHT SEMICOLON .
+
+    $default  reduce using rule 37 (declaration)
+
+
+state 125
+
+   36 declaration: ARRAY TYPE_INT VARIABLE LEFT INT RIGHT SEMICOLON .
+
+    $default  reduce using rule 36 (declaration)
+
+
+state 126
+
+   13 ifeitherlast: IF numberr LEFTBRACE if_statement RIGHTBRACE $@1 LAST . LEFTBRACE if_statement RIGHTBRACE
+
+    LEFTBRACE  shift, and go to state 134
+
+
+state 127
+
+   17 ifeitherlast: IF numberr LEFTBRACE if_statement RIGHTBRACE $@2 EITHER . numberr $@3 LEFTBRACE if_statement RIGHTBRACE $@4 LAST LEFTBRACE if_statement RIGHTBRACE
+
+    INT       shift, and go to state 32
+    VARIABLE  shift, and go to state 33
+
+    numberr  go to state 135
+
+
+state 128
+
+   20 ifeitherlast: IF numberr LEFTBRACE if_statement IF numberr $@5 . LEFTBRACE if_statement RIGHTBRACE $@6 LAST LEFTBRACE if_statement RIGHTBRACE RIGHTBRACE
+
+    LEFTBRACE  shift, and go to state 136
+
+
+state 129
+
+   30 loop: FOR VARIABLE EQUAL INT COMMA VARIABLE LESSTHAN . INT COMMA VARIABLE INCREASE LEFT PRINT LEFT VARIABLE LEFT VARIABLE RIGHT RIGHT SEMICOLON RIGHT
+
+    INT  shift, and go to state 137
+
+
+state 130
+
+   25 casing: casing CASE INT . $@8 LEFTBRACE if_statement RIGHTBRACE
+
+    $default  reduce using rule 24 ($@8)
+
+    $@8  go to state 138
+
+
+state 131
+
+   27 casing: casing CASE FLOAT . LEFTBRACE $@9 if_statement RIGHTBRACE
+
+    LEFTBRACE  shift, and go to state 139
+
+
+state 132
+
+   38 declaration: VARIABLE LEFT INT RIGHT EQUAL INT SEMICOLON .
+
+    $default  reduce using rule 38 (declaration)
+
+
+state 133
+
+   39 declaration: VARIABLE LEFT INT RIGHT EQUAL FLOAT SEMICOLON .
+
+    $default  reduce using rule 39 (declaration)
+
+
+state 134
+
+   13 ifeitherlast: IF numberr LEFTBRACE if_statement RIGHTBRACE $@1 LAST LEFTBRACE . if_statement RIGHTBRACE
+
+    $default  reduce using rule 28 (if_statement)
+
+    if_statement  go to state 140
+
+
+state 135
+
+   17 ifeitherlast: IF numberr LEFTBRACE if_statement RIGHTBRACE $@2 EITHER numberr . $@3 LEFTBRACE if_statement RIGHTBRACE $@4 LAST LEFTBRACE if_statement RIGHTBRACE
+   55 numberr: numberr . GREATERTHAN numberr
+   56        | numberr . LESSTHAN numberr
+   57        | numberr . EQUALEQUAL numberr
+   58        | numberr . NOTEQUAL numberr
+   59        | numberr . OR numberr
+   60        | numberr . AND numberr
+
+    EQUALEQUAL   shift, and go to state 48
+    LESSTHAN     shift, and go to state 49
+    GREATERTHAN  shift, and go to state 50
+    NOTEQUAL     shift, and go to state 51
+    AND          shift, and go to state 52
+    OR           shift, and go to state 53
+
+    $default  reduce using rule 15 ($@3)
+
+    $@3  go to state 141
+
+
+state 136
+
+   20 ifeitherlast: IF numberr LEFTBRACE if_statement IF numberr $@5 LEFTBRACE . if_statement RIGHTBRACE $@6 LAST LEFTBRACE if_statement RIGHTBRACE RIGHTBRACE
+
+    $default  reduce using rule 28 (if_statement)
+
+    if_statement  go to state 142
+
+
+state 137
+
+   30 loop: FOR VARIABLE EQUAL INT COMMA VARIABLE LESSTHAN INT . COMMA VARIABLE INCREASE LEFT PRINT LEFT VARIABLE LEFT VARIABLE RIGHT RIGHT SEMICOLON RIGHT
+
+    COMMA  shift, and go to state 143
+
+
+state 138
+
+   25 casing: casing CASE INT $@8 . LEFTBRACE if_statement RIGHTBRACE
+
+    LEFTBRACE  shift, and go to state 144
+
+
+state 139
+
+   27 casing: casing CASE FLOAT LEFTBRACE . $@9 if_statement RIGHTBRACE
+
+    $default  reduce using rule 26 ($@9)
+
+    $@9  go to state 145
+
+
+state 140
+
+   13 ifeitherlast: IF numberr LEFTBRACE if_statement RIGHTBRACE $@1 LAST LEFTBRACE if_statement . RIGHTBRACE
+   29 if_statement: if_statement . printf
+
+    RIGHTBRACE  shift, and go to state 146
+    PRINT       shift, and go to state 12
+
+    printf  go to state 101
+
+
+state 141
+
+   17 ifeitherlast: IF numberr LEFTBRACE if_statement RIGHTBRACE $@2 EITHER numberr $@3 . LEFTBRACE if_statement RIGHTBRACE $@4 LAST LEFTBRACE if_statement RIGHTBRACE
+
+    LEFTBRACE  shift, and go to state 147
+
+
+state 142
+
+   20 ifeitherlast: IF numberr LEFTBRACE if_statement IF numberr $@5 LEFTBRACE if_statement . RIGHTBRACE $@6 LAST LEFTBRACE if_statement RIGHTBRACE RIGHTBRACE
+   29 if_statement: if_statement . printf
+
+    RIGHTBRACE  shift, and go to state 148
+    PRINT       shift, and go to state 12
+
+    printf  go to state 101
+
+
+state 143
+
+   30 loop: FOR VARIABLE EQUAL INT COMMA VARIABLE LESSTHAN INT COMMA . VARIABLE INCREASE LEFT PRINT LEFT VARIABLE LEFT VARIABLE RIGHT RIGHT SEMICOLON RIGHT
+
+    VARIABLE  shift, and go to state 149
+
+
+state 144
+
+   25 casing: casing CASE INT $@8 LEFTBRACE . if_statement RIGHTBRACE
+
+    $default  reduce using rule 28 (if_statement)
+
+    if_statement  go to state 150
+
+
+state 145
+
+   27 casing: casing CASE FLOAT LEFTBRACE $@9 . if_statement RIGHTBRACE
+
+    $default  reduce using rule 28 (if_statement)
+
+    if_statement  go to state 151
+
+
+state 146
+
+   13 ifeitherlast: IF numberr LEFTBRACE if_statement RIGHTBRACE $@1 LAST LEFTBRACE if_statement RIGHTBRACE .
+
+    $default  reduce using rule 13 (ifeitherlast)
+
+
+state 147
+
+   17 ifeitherlast: IF numberr LEFTBRACE if_statement RIGHTBRACE $@2 EITHER numberr $@3 LEFTBRACE . if_statement RIGHTBRACE $@4 LAST LEFTBRACE if_statement RIGHTBRACE
+
+    $default  reduce using rule 28 (if_statement)
+
+    if_statement  go to state 152
+
+
+state 148
+
+   20 ifeitherlast: IF numberr LEFTBRACE if_statement IF numberr $@5 LEFTBRACE if_statement RIGHTBRACE . $@6 LAST LEFTBRACE if_statement RIGHTBRACE RIGHTBRACE
+
+    $default  reduce using rule 19 ($@6)
+
+    $@6  go to state 153
+
+
+state 149
+
+   30 loop: FOR VARIABLE EQUAL INT COMMA VARIABLE LESSTHAN INT COMMA VARIABLE . INCREASE LEFT PRINT LEFT VARIABLE LEFT VARIABLE RIGHT RIGHT SEMICOLON RIGHT
+
+    INCREASE  shift, and go to state 154
+
+
+state 150
+
+   25 casing: casing CASE INT $@8 LEFTBRACE if_statement . RIGHTBRACE
+   29 if_statement: if_statement . printf
+
+    RIGHTBRACE  shift, and go to state 155
+    PRINT       shift, and go to state 12
+
+    printf  go to state 101
+
+
+state 151
+
+   27 casing: casing CASE FLOAT LEFTBRACE $@9 if_statement . RIGHTBRACE
+   29 if_statement: if_statement . printf
+
+    RIGHTBRACE  shift, and go to state 156
+    PRINT       shift, and go to state 12
+
+    printf  go to state 101
+
+
+state 152
+
+   17 ifeitherlast: IF numberr LEFTBRACE if_statement RIGHTBRACE $@2 EITHER numberr $@3 LEFTBRACE if_statement . RIGHTBRACE $@4 LAST LEFTBRACE if_statement RIGHTBRACE
+   29 if_statement: if_statement . printf
+
+    RIGHTBRACE  shift, and go to state 157
+    PRINT       shift, and go to state 12
+
+    printf  go to state 101
+
+
+state 153
+
+   20 ifeitherlast: IF numberr LEFTBRACE if_statement IF numberr $@5 LEFTBRACE if_statement RIGHTBRACE $@6 . LAST LEFTBRACE if_statement RIGHTBRACE RIGHTBRACE
+
+    LAST  shift, and go to state 158
+
+
+state 154
+
+   30 loop: FOR VARIABLE EQUAL INT COMMA VARIABLE LESSTHAN INT COMMA VARIABLE INCREASE . LEFT PRINT LEFT VARIABLE LEFT VARIABLE RIGHT RIGHT SEMICOLON RIGHT
+
+    LEFT  shift, and go to state 159
+
+
+state 155
+
+   25 casing: casing CASE INT $@8 LEFTBRACE if_statement RIGHTBRACE .
+
+    $default  reduce using rule 25 (casing)
+
+
+state 156
+
+   27 casing: casing CASE FLOAT LEFTBRACE $@9 if_statement RIGHTBRACE .
+
+    $default  reduce using rule 27 (casing)
+
+
+state 157
+
+   17 ifeitherlast: IF numberr LEFTBRACE if_statement RIGHTBRACE $@2 EITHER numberr $@3 LEFTBRACE if_statement RIGHTBRACE . $@4 LAST LEFTBRACE if_statement RIGHTBRACE
+
+    $default  reduce using rule 16 ($@4)
+
+    $@4  go to state 160
+
+
+state 158
+
+   20 ifeitherlast: IF numberr LEFTBRACE if_statement IF numberr $@5 LEFTBRACE if_statement RIGHTBRACE $@6 LAST . LEFTBRACE if_statement RIGHTBRACE RIGHTBRACE
+
+    LEFTBRACE  shift, and go to state 161
+
+
+state 159
+
+   30 loop: FOR VARIABLE EQUAL INT COMMA VARIABLE LESSTHAN INT COMMA VARIABLE INCREASE LEFT . PRINT LEFT VARIABLE LEFT VARIABLE RIGHT RIGHT SEMICOLON RIGHT
+
+    PRINT  shift, and go to state 162
+
+
+state 160
+
+   17 ifeitherlast: IF numberr LEFTBRACE if_statement RIGHTBRACE $@2 EITHER numberr $@3 LEFTBRACE if_statement RIGHTBRACE $@4 . LAST LEFTBRACE if_statement RIGHTBRACE
+
+    LAST  shift, and go to state 163
+
+
+state 161
+
+   20 ifeitherlast: IF numberr LEFTBRACE if_statement IF numberr $@5 LEFTBRACE if_statement RIGHTBRACE $@6 LAST LEFTBRACE . if_statement RIGHTBRACE RIGHTBRACE
+
+    $default  reduce using rule 28 (if_statement)
+
+    if_statement  go to state 164
+
+
+state 162
+
+   30 loop: FOR VARIABLE EQUAL INT COMMA VARIABLE LESSTHAN INT COMMA VARIABLE INCREASE LEFT PRINT . LEFT VARIABLE LEFT VARIABLE RIGHT RIGHT SEMICOLON RIGHT
+
+    LEFT  shift, and go to state 165
+
+
+state 163
+
+   17 ifeitherlast: IF numberr LEFTBRACE if_statement RIGHTBRACE $@2 EITHER numberr $@3 LEFTBRACE if_statement RIGHTBRACE $@4 LAST . LEFTBRACE if_statement RIGHTBRACE
+
+    LEFTBRACE  shift, and go to state 166
+
+
+state 164
+
+   20 ifeitherlast: IF numberr LEFTBRACE if_statement IF numberr $@5 LEFTBRACE if_statement RIGHTBRACE $@6 LAST LEFTBRACE if_statement . RIGHTBRACE RIGHTBRACE
+   29 if_statement: if_statement . printf
+
+    RIGHTBRACE  shift, and go to state 167
+    PRINT       shift, and go to state 12
+
+    printf  go to state 101
+
+
+state 165
+
+   30 loop: FOR VARIABLE EQUAL INT COMMA VARIABLE LESSTHAN INT COMMA VARIABLE INCREASE LEFT PRINT LEFT . VARIABLE LEFT VARIABLE RIGHT RIGHT SEMICOLON RIGHT
+
+    VARIABLE  shift, and go to state 168
+
+
+state 166
+
+   17 ifeitherlast: IF numberr LEFTBRACE if_statement RIGHTBRACE $@2 EITHER numberr $@3 LEFTBRACE if_statement RIGHTBRACE $@4 LAST LEFTBRACE . if_statement RIGHTBRACE
+
+    $default  reduce using rule 28 (if_statement)
+
+    if_statement  go to state 169
+
+
+state 167
+
+   20 ifeitherlast: IF numberr LEFTBRACE if_statement IF numberr $@5 LEFTBRACE if_statement RIGHTBRACE $@6 LAST LEFTBRACE if_statement RIGHTBRACE . RIGHTBRACE
+
+    RIGHTBRACE  shift, and go to state 170
+
+
+state 168
+
+   30 loop: FOR VARIABLE EQUAL INT COMMA VARIABLE LESSTHAN INT COMMA VARIABLE INCREASE LEFT PRINT LEFT VARIABLE . LEFT VARIABLE RIGHT RIGHT SEMICOLON RIGHT
+
+    LEFT  shift, and go to state 171
+
+
+state 169
+
+   17 ifeitherlast: IF numberr LEFTBRACE if_statement RIGHTBRACE $@2 EITHER numberr $@3 LEFTBRACE if_statement RIGHTBRACE $@4 LAST LEFTBRACE if_statement . RIGHTBRACE
+   29 if_statement: if_statement . printf
+
+    RIGHTBRACE  shift, and go to state 172
+    PRINT       shift, and go to state 12
+
+    printf  go to state 101
+
+
+state 170
+
+   20 ifeitherlast: IF numberr LEFTBRACE if_statement IF numberr $@5 LEFTBRACE if_statement RIGHTBRACE $@6 LAST LEFTBRACE if_statement RIGHTBRACE RIGHTBRACE .
+
+    $default  reduce using rule 20 (ifeitherlast)
+
+
+state 171
+
+   30 loop: FOR VARIABLE EQUAL INT COMMA VARIABLE LESSTHAN INT COMMA VARIABLE INCREASE LEFT PRINT LEFT VARIABLE LEFT . VARIABLE RIGHT RIGHT SEMICOLON RIGHT
+
+    VARIABLE  shift, and go to state 173
+
+
+state 172
+
+   17 ifeitherlast: IF numberr LEFTBRACE if_statement RIGHTBRACE $@2 EITHER numberr $@3 LEFTBRACE if_statement RIGHTBRACE $@4 LAST LEFTBRACE if_statement RIGHTBRACE .
+
+    $default  reduce using rule 17 (ifeitherlast)
+
+
+state 173
+
+   30 loop: FOR VARIABLE EQUAL INT COMMA VARIABLE LESSTHAN INT COMMA VARIABLE INCREASE LEFT PRINT LEFT VARIABLE LEFT VARIABLE . RIGHT RIGHT SEMICOLON RIGHT
+
+    RIGHT  shift, and go to state 174
+
+
+state 174
+
+   30 loop: FOR VARIABLE EQUAL INT COMMA VARIABLE LESSTHAN INT COMMA VARIABLE INCREASE LEFT PRINT LEFT VARIABLE LEFT VARIABLE RIGHT . RIGHT SEMICOLON RIGHT
+
+    RIGHT  shift, and go to state 175
+
+
+state 175
+
+   30 loop: FOR VARIABLE EQUAL INT COMMA VARIABLE LESSTHAN INT COMMA VARIABLE INCREASE LEFT PRINT LEFT VARIABLE LEFT VARIABLE RIGHT RIGHT . SEMICOLON RIGHT
+
+    SEMICOLON  shift, and go to state 176
+
+
+state 176
+
+   30 loop: FOR VARIABLE EQUAL INT COMMA VARIABLE LESSTHAN INT COMMA VARIABLE INCREASE LEFT PRINT LEFT VARIABLE LEFT VARIABLE RIGHT RIGHT SEMICOLON . RIGHT
+
+    RIGHT  shift, and go to state 177
+
+
+state 177
+
+   30 loop: FOR VARIABLE EQUAL INT COMMA VARIABLE LESSTHAN INT COMMA VARIABLE INCREASE LEFT PRINT LEFT VARIABLE LEFT VARIABLE RIGHT RIGHT SEMICOLON RIGHT .
+
+    $default  reduce using rule 30 (loop)

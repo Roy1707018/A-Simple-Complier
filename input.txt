@@ -1,0 +1,111 @@
+main_puja()
+{
+a=7;b=8;cc=10;
+d=7.7;ee=4.6464;f=2;
+print:('The values of variables are: ');
+print:(a b cc d ee f );//variable print
+g='puja';
+print:(g);
+c= lengthstring:(g);
+print:(c);
+@@printkaokspjdjjodijdj
+akakkodkdokdokokodk@@
+array:float:ar2(10);
+print:('Array store ar2 ');
+array:float:ar(10);
+print:('Array store ar ');
+ar2(0)=11.01;
+ar2(1)=12.009;
+ar2(2)=13.19;
+ar2(3)=12.00;
+ar2(4)=0.1;
+ar2(5)=12.10;
+ar2(6)=90.10;
+ar2(7)=3.17;
+ar2(8)=3.100;
+ar2(9)=1.90;
+ar2(9)=100.99;
+for:i=0,i<10,i++
+(
+ print:(ar2(i));
+)
+//add
+@@int:add = a + 4 * 3 - 1;
+int:add2 = 1 * 2 * 3;
+float:add4 = 1.1 * 2.34 + 3.9 + 1.00;@@
+//float:add = 2.90 + 9.67;
+print:( add add2 add4 a);
+
+//if_else
+
+if: a==b && a!=1 && a!=2 && a!=3 && a!=4
+{
+print:('simple if block acivated ');
+print:('This is simple if block 2nd line ');
+
+}
+if:a>b && a!=1 && a!=2 && a!=3 && a!=4 
+{
+print:('This is  nested main if block ');
+if:a==b || a!=1 
+{
+print:('This is  nested if block ');
+print:(a b);
+}
+last:
+{
+print:('This is if nested last block ');
+}
+}
+if:a==b && a!=1 && a!=2 && a!=3 && a!=4
+{
+print:('This is iflast main if block ');
+}
+last:
+{
+print:('This is iflast last block ');
+}
+
+if:a==b || a!=1 
+{print:('This is ifeitherlast main if block ');}
+either:a<b && a!=1 && a!=2 && a!=3 && a!=4
+{print:('This is ifeitherlast either block ');}
+last:
+{print:('This is ifeitherlast last block ');}
+
+
+for:i=9,i>-1,i--
+(
+ print:(ar2(i));
+) 
+switch:a
+(
+case:1 
+{print:('This is  case1 block ');}
+case:7
+{print:('This is  case2 block ');
+print:('This is  case2 block 2nd line ');}
+case:2.2
+{print:('This is  case3 block ');}
+case:3
+{print:('This is extra block ');}
+case:7
+{print:('This is  case5 block ');}
+)
+
+sort: ar2;//ascending sort
+print:('This is sorting ');
+for:i=0,i<10,i++
+(
+ print:(ar2(i));
+)
+reversesort: ar2;//descending sort
+print:('This is sorting reversely ');
+for:i=0,i<10,i++
+(
+ print:(ar2(i));
+)
+g=2.3;
+print:(g);
+print:('finish input txt ');
+}
